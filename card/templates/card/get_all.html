@@ -1,0 +1,21 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+    <h1 class="mb-6 text-3xl">Cards</h1>
+
+    <a href="{% url 'card:add' %}" class="py-4 px-8 bg-sky-600 text-white inline-block">Add card</a>
+
+    <div class="mt-6 grid grid-cols-4 gap-4">
+        {% for card in cards %}
+            <div class="py-6 px-6 bg-slate-200">
+                <a href="{% url 'card:card' card.id %}">
+                    <h2 class="mb-4 text-xl">{{ card.link }}</h2>
+
+                    <p class="text-sm text-slate-600">
+                        {{ card.description }}
+                    </p>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
